@@ -23,9 +23,6 @@ public class Player {
         return credits;
     }
 
-//    public boolean checkFunds(){
-//
-//    }
 
 
     public void minusCredit() {

@@ -6,7 +6,7 @@ import java.util.Scanner;
 import static android.R.attr.y;
 
 /**
- * Created by user on 30/06/2017.
+ * Created by John Allan on 30/06/2017.
  */
 
 public class Game {
@@ -38,10 +38,11 @@ public class Game {
                 printer.playGameAgain();
             }else { printer.cheekyAnswer();
                 return;
-            }
+                    }
             }else {
                 printer.notEnoughFunds();
-                return;}
+                return;
+                    }
         }
     }
 }

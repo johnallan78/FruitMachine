@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import static android.R.attr.value;
+import static android.media.CamcorderProfile.get;
 
 /**
  * Created by user on 30/06/2017.
@@ -47,7 +48,7 @@ public class Machine {
             Symbol symbol = wheel.get(index);
             System.out.println(symbol);
             result.add(symbol);
-        }if ((result.get(0) == result.get(1)) && (result.get(1) == result.get(2))) {
+        }if ((result.get(0).value == result.get(1).value) && (result.get(0).value == result.get(2).value)) {
             jackpot();
         }else{
             addToJackpot();}
@@ -60,7 +61,9 @@ public class Machine {
 
 
     private void jackpot() {
-
         System.out.println("Jackpot!");
+        int prize = (result.get(0).value * 3);
+        System.out.println("You have won £" + prize + "!");
+        System.out.println("The JackPot now stands at" + (money - prize));
     }
 }
