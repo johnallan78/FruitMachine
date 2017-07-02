@@ -17,7 +17,7 @@ public class Game {
     private Scanner sc;
 
     public Game(){
-        player = new Player(20);
+        player = new Player(1);
         machine = new Machine(50);
         sc = new Scanner(System.in);
         printer = new Printer();
@@ -34,7 +34,6 @@ public class Game {
                 player.minusCredit();
                 machine.spinWheel();
                 System.out.println("You have " + player.getCredits() + " credits left.");
-                System.out.println("The JackPot now stands at £" + machine.getMoney() + ".00");
             }else if (answer.equals("n")) { printer.cheekyAnswer();
                 return;
                     }

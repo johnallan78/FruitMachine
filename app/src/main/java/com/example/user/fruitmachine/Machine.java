@@ -78,9 +78,10 @@ public class Machine {
         int index = random.nextInt(result.size());
         Symbol symbol = result.get(index);
         System.out.println("New nudge is: " + symbol);
+        result.remove(0);
         result.add(0, symbol);
-        if ((result.get(0).value == result.get(1).value) &&
-                (result.get(0).value == result.get(2).value)) {
+        if ((result.get(0).getValue() == result.get(1).getValue()) &&
+                (result.get(0).getValue() == result.get(2).getValue())) {
             jackpot();
 
         }else{
@@ -94,9 +95,10 @@ public class Machine {
         int index = random.nextInt(result.size());
         Symbol symbol = result.get(index);
         System.out.println("New nudge is: " + symbol);
+        result.remove(1);
         result.add(1, symbol);
-        if ((result.get(0).value == result.get(1).value) &&
-                (result.get(0).value == result.get(2).value)) {
+        if ((result.get(0).getValue() == result.get(1).getValue()) &&
+                (result.get(0).getValue() == result.get(2).getValue())) {
             jackpot();
 
         }else{
@@ -109,9 +111,10 @@ public class Machine {
         int index = random.nextInt(result.size());
         Symbol symbol = result.get(index);
         System.out.println("New nudge is: " + symbol);
+        result.remove(2);
         result.add(2, symbol);
-        if ((result.get(0).value == result.get(1).value) &&
-                (result.get(0).value == result.get(2).value)) {
+        if ((result.get(0).getValue() == result.get(1).getValue()) &&
+                (result.get(0).getValue() == result.get(2).getValue())) {
             jackpot();
 
         }else{
