@@ -26,7 +26,7 @@ public class Game {
     public void play(){
         System.out.println("The JackPot stands at £" + machine.getMoney() + ".00");
         printer.playGame();
-        while (true){
+
             if (player.getCredits() > 0){
             String answer = sc.nextLine();
             if (answer.equals("y")) {
@@ -35,14 +35,13 @@ public class Game {
                 machine.spinWheel();
                 System.out.println("You have " + player.getCredits() + " credits left.");
                 System.out.println("The JackPot now stands at £" + machine.getMoney() + ".00");
-                printer.playGameAgain();
-            }else { printer.cheekyAnswer();
+            }else if (answer.equals("n")) { printer.cheekyAnswer();
                 return;
                     }
             }else {
                 printer.notEnoughFunds();
                 return;
                     }
-        }
+
     }
 }

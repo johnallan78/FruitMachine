@@ -17,17 +17,12 @@ public class Machine {
 
     private int money;
     private Random random;
-    Printer printer;
-    Player player;
 
 
     public Machine(int money) {
         wheel = new ArrayList<>();
         result = new ArrayList<>();
         this.money = money;
-        player = new Player(20);
-        random = new Random();
-        printer = new Printer();
     }
 
     public int getMoney() {
@@ -41,29 +36,86 @@ public class Machine {
         return wheel;
 }
 
-
-    public void spinWheel() {
+    public void spinWheel(){
+        random = new Random();
         for (int i = 0; i < 3; i++) {
             int index = random.nextInt(wheel.size());
             Symbol symbol = wheel.get(index);
             System.out.println(symbol);
             result.add(symbol);
-        }if ((result.get(0).value == result.get(1).value) && (result.get(0).value == result.get(2).value)) {
+        }if ((result.get(0).value == result.get(1).value) &&
+                (result.get(0).value == result.get(2).value)) {
             jackpot();
-        }else{
-            addToJackpot();}
 
+        }else if((result.get(0).value == result.get(1).value) &&
+                (result.get(0).value != result.get(2).value)){
+            nudgeRight();
+        }else if((result.get(1).value == result.get(2).value) &&
+                (result.get(1).value != result.get(0).value))
+        {
+            nudgeLeft();
+        }else if((result.get(0).value == result.get(2).value) &&
+                (result.get(0).value != result.get(1).value)) {
+            nudgeCenter();
+        }
+        else {
+            addToJackpot();}
     }
 
     public void addToJackpot(){
         this.money += 1;
     }
 
-
-    private void jackpot() {
+    public void jackpot() {
         System.out.println("Jackpot!");
         int prize = (result.get(0).value * 3);
         System.out.println("You have won £" + prize + "!");
-        System.out.println("The JackPot now stands at" + (money - prize));
+        System.out.println("The JackPot now stands at £" + (money -= prize));
+    }
+
+    public Symbol nudgeLeft(){
+        System.out.println("You can nudge " + result.get(0));
+        int index = random.nextInt(result.size());
+        Symbol symbol = result.get(index);
+        System.out.println("New nudge is: " + symbol);
+        result.add(0, symbol);
+        if ((result.get(0).value == result.get(1).value) &&
+                (result.get(0).value == result.get(2).value)) {
+            jackpot();
+
+        }else{
+            addToJackpot();
+        }
+        return symbol;
+    }
+
+    public Symbol nudgeCenter(){
+        System.out.println("You can nudge " + result.get(1));
+        int index = random.nextInt(result.size());
+        Symbol symbol = result.get(index);
+        System.out.println("New nudge is: " + symbol);
+        result.add(1, symbol);
+        if ((result.get(0).value == result.get(1).value) &&
+                (result.get(0).value == result.get(2).value)) {
+            jackpot();
+
+        }else{
+            addToJackpot();
+        }return symbol;
+    }
+
+    public Symbol nudgeRight(){
+        System.out.println("You can nudge " + result.get(2));
+        int index = random.nextInt(result.size());
+        Symbol symbol = result.get(index);
+        System.out.println("New nudge is: " + symbol);
+        result.add(2, symbol);
+        if ((result.get(0).value == result.get(1).value) &&
+                (result.get(0).value == result.get(2).value)) {
+            jackpot();
+
+        }else{
+            addToJackpot();
+        }return symbol;
     }
 }

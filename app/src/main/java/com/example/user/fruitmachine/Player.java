@@ -23,8 +23,6 @@ public class Player {
         return credits;
     }
 
-
-
     public void minusCredit() {
         credits -= 1;
     }
