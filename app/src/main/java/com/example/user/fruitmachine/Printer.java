@@ -20,10 +20,6 @@ public class Printer {
         System.out.println("Would you like to play?(y/n) ");
     }
 
-    public void playGameAgain() {
-        System.out.println("Would you like to play again?(y/n) ");
-    }
-
     public void cheekyAnswer() {
         random = new Random();
         cheekyAnswers = new ArrayList<>();
